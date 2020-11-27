@@ -1,22 +1,20 @@
 package com.wirebarley.autotest.operation;
 
 import com.wirebarley.autotest.service.AuToKr;
+import com.wirebarley.autotest.type.TransferType;
 
 public class OperationFactory implements Operation{
 
-
-  public Operation setType(String type) {
+  public static Operation setType(TransferType type) {
     if (type == null) {
       return null;
     }
-    if (type.equalsIgnoreCase("auToKr")) {
+    if (type == TransferType.AU_KR) {
       return new AuToKr();
     }
     return null;
   }
 
   @Override
-  public void runTest() {
-
-  }
+  public void runTest() {}
 }

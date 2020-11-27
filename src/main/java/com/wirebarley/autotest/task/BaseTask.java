@@ -2,14 +2,17 @@ package com.wirebarley.autotest.task;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 @NoArgsConstructor
 public class BaseTask implements BaseTaskInterface {
 
-
+  @Getter
+  @Setter
   private ChromeDriver driver;
 
   @Override
@@ -19,7 +22,6 @@ public class BaseTask implements BaseTaskInterface {
 
     // WebDriver 경로 설정
     System.setProperty("webdriver.chrome.driver", path.toString());
-
   }
 
   @Override
@@ -31,7 +33,7 @@ public class BaseTask implements BaseTaskInterface {
     options.addArguments("--disable-default-apps");     // 기본앱 사용안함
 
     // WebDriver 객체 생성
-    driver = new ChromeDriver( options );
+    setDriver(new ChromeDriver( options ));
   }
 
   /**
@@ -46,7 +48,7 @@ public class BaseTask implements BaseTaskInterface {
   @Override
   public void fini() {
     // 탭 종료
-    driver.close();
+    getDriver().close();
 
   }
 
@@ -59,7 +61,7 @@ public class BaseTask implements BaseTaskInterface {
       e.printStackTrace();
     } finally {
       // WebDriver 종료
-      driver.quit();
+      getDriver().quit();
     }
   }
 
