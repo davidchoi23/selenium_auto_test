@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+    id "io.franzbecker.gradle-lombok" version "3.3.0"
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven {
+        url "https://plugins.gradle.org/m2/"
+    }
+}
+
+dependencies {
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: '3.141.59'
+    compile group: 'io.franzbecker.gradle-lombok', name: 'io.franzbecker.gradle-lombok.gradle.plugin', version: '3.3.0', ext: 'pom'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+apply plugin: "io.franzbecker.gradle-lombok"
